@@ -63,3 +63,39 @@
             - ```<Title></Title>```
             - ```<Title />```
 
+- New app for delivering the food.
+- Components
+    - Header
+        - Logo
+        - New Items
+    - Body
+        - Search
+        - Restaurant Container
+            - RestaurantCart
+    - Footer
+        - Copyright
+        - Links
+        - Address
+        - Contact
+    
+- Config Driven UI
+- There are two types of export
+    - Default Import / Export
+        - ```export default Component;```
+        - ```import component from "path";```
+    - Named Import / Export
+        - ```export const Component = {};```
+        - ```import {Component} from "path"```
+- React Hooks (State Variable)
+    - Normal js functions
+    - There are many hooks but following two you will use more 
+    - useState()
+        - Whenever state variable changes, react re-render the component
+    - useEffect()
+- React uses reconciliation algorithm. Also known as React fiber.
+    - In React 16, new algorithm come, known as React fiber.
+    - It is a new way to update the dom
+    - It creates virtual dom from actual dom.
+    - Diff algorithm find out the differences between current object and new updated object.
+    - After finding differences it update the html.
+    - This is the reason, why react is fast.
