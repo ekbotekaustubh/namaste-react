@@ -99,3 +99,7 @@
     - Diff algorithm find out the differences between current object and new updated object.
     - After finding differences it update the html.
     - This is the reason, why react is fast.
+- There are two approaches for rendering API data (We are going to use 2nd approach)
+    - 1) When page loads -> call API and wait for response -> After response render UI
+    - 2) When page loads -> render with skeleton -> call API and wait for response -> After response re-render UI
+    
