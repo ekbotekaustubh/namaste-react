@@ -26,7 +26,7 @@ const RestaurantCard = (props) => {
                 <h4>{veg? "Only Veg" : "Veg / Non-Veg"}</h4>
                 <h4>{avgRating} Star</h4>
                 <h4>{costForTwo}</h4>
-                <h4>{sla.deliveryTime} Minutes</h4>
+                <h4>{sla.slaString}</h4>
             </div>
         </div>
     )

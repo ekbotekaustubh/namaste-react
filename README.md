@@ -91,7 +91,26 @@
     - There are many hooks but following two you will use more 
     - useState()
         - Whenever state variable changes, react re-render the component
+        - Never create useState variables outside your component. It will throw error.
+        - Try to call hooks on the top, as there will be inconsistency and code look ugly.
+        - Never create useState inside if condition, this can create inconsistency in your code.
+        - Never create useState inside loop, condition, function. You can create them inside component at top.
     - useEffect()
+        - useEffect hook has 2 parameters   
+            - Callback function
+            - Dependency array
+        - useEffect get called after every render of that component.
+        - Dependency array is not mandatory.
+        - So if dependency array is not passed then, useEffect get call after every render.
+        - If dependency array is passed, but it is empty, then useEffect is called after initial render. And it renders just once.
+        - If dependency array is passed and not empty, then useEffect will get called every time dependency get changed.
+        - For Ex.
+          ```
+          useEffect(() => {
+            console.log("useEffect called");
+          }, [buttonName])
+          ```
+        - Dependency is nothing but a state variable.
 - React uses reconciliation algorithm. Also known as React fiber.
     - In React 16, new algorithm come, known as React fiber.
     - It is a new way to update the dom
@@ -103,3 +122,14 @@
     - 1) When page loads -> call API and wait for response -> After response render UI
     - 2) When page loads -> render with skeleton -> call API and wait for response -> After response re-render UI
 - Whenever state variable update, react triggers a reconciliation cycle (re-render the component)    
+- 2 types of routing in web app
+    - 1) Client side routing
+        - All the component is loaded in app in browser
+        - It just loads that component
+        - No network call
+    - 2) Server side routing
+        - From browser, we enter url
+        - It makes a network call 
+        - Fetch page and show on browser.
+- Dynamic routing
+    - 
