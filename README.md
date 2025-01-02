@@ -131,5 +131,48 @@
         - From browser, we enter url
         - It makes a network call 
         - Fetch page and show on browser.
-- Dynamic routing
-    - 
+- Never directly update state variable. Use set functions.
+    - For functional components we can have set methods for that variable.
+    - in class base component use this.setState() function.
+    - If you have 10 state variable and you are updating only 2 variables using setState method, 
+      then it will update only 2 variables and it won't touch other 8.
+- React Lifecycle of class based component
+    - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+    - React Lifecycle - 
+        - Parent constructor
+        - Parent Render
+        - First Child Constructor
+        - First Child Render
+        - Second Child Constructor
+        - Second Child Render
+          ---------------- Updates DOM here ----------------------
+        - First Child Component Did Mount
+        - Second Child Component Did Mount
+        - Parent Component Did Mount
+    - React life cycle works in 2 phases
+        - Render Phase
+            - This is very fast phase.
+            - Here it renders the component. 
+        - Commit Phase
+            - This phase take time. 
+            - We can call APIs in this phase.
+    - React batches all parent  / child constructor and render methods
+    - Update the DOM
+    - Then it calls componentDidMount method.
+    - Then it re-render the page.
+    
+    - React lifecycle of single class based component
+    - Constructor get called
+    - Render get called (with dummy data)
+    - DOM updated with dummy data
+    - componentDidMount get called
+        - We make API call in this function
+        - We fill state variable with response from API
+    - Whenever setState get called, it calls render method again with API data
+    - DOM Updated with new API data
+    - componentDidUpdate get called.
+    - Once we go to other page, componentWillUnmount get called.
+        - In this method we can clear the things.
+        - Ex. If we started setInterval in componentDidMount, we need to call clearInterval in componentWillUnmount.
+    - Same thing in function based components
+        - If we call setInterval in useEffect, then in return of setEffect we need to clear it. 
