@@ -175,4 +175,8 @@
         - In this method we can clear the things.
         - Ex. If we started setInterval in componentDidMount, we need to call clearInterval in componentWillUnmount.
     - Same thing in function based components
-        - If we call setInterval in useEffect, then in return of setEffect we need to clear it. 
+        - If we call setInterval in useEffect, then in return of setEffect we need to clear it.
+- Parcel bundle the application in one file.
+  but it will be a problem that if application is big and bundled in one file.
+  It will take time to load. Same case with small application and multiple bundles.
+  So Parcel will help you to create bundle chunks and this is called as Chunking, code splitting, dynamic Bundling, lazy loading, dynamic importing.    
