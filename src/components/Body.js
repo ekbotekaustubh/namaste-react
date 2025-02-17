@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 import {Link} from "react-router-dom";
-import RestaurantCard from "./ReastaurantCard"
+import RestaurantCard, {withPramotedLabel} from "./ReastaurantCard"
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -9,6 +9,7 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
     const [filteredRestaurants, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const RestaurentCardPramoted = withPramotedLabel(RestaurantCard);
 
     useEffect(() => {
         fetchData();
@@ -31,40 +32,49 @@ const Body = () => {
     }
     return (listOfRestaurants.length === 0)? <Shimmer /> : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText} onChange={(e) => {
+            <div className="filter flex">
+                <div className="m-4 p-4">
+                    <input type="text" className="py-1 border border-solid border-black" value={searchText} onChange={(e) => {
                         setSearchText(e.target.value);
                     }}/>
-                    <button onClick={() => {
+                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
                         const filteredList = listOfRestaurants.filter(
                             (res) => res.info?.name.toLowerCase().includes(searchText.toLowerCase())
                         );
                         setFilteredRestaurant(filteredList);
                     }}>Search</button>
                 </div>
-                <button className="filter-btn" onClick={() => {
-                    const filteredList = listOfRestaurants.filter(
-                        (res) => res.info?.avgRating > 4.4
-                    );
-                    setFilteredRestaurant(filteredList);
-                }}>Top Rated Restaurants</button>
+                <div className="m-4 p-4 flex item-center">
+                    <button className="flex px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
+                        const filteredList = listOfRestaurants.filter(
+                            (res) => res.info?.avgRating > 4.4
+                        );
+                        setFilteredRestaurant(filteredList);
+                    }}>Top Rated Restaurants</button>
 
-                <button className="filter-btn" onClick={() => {
-                    const filteredList = listOfRestaurants.filter(
-                        (res) => (res.info?.veg === true)
-                    )
-                    setFilteredRestaurant(filteredList);
-                }}>Only Veg</button>
+                    <button className="flex px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
+                        const filteredList = listOfRestaurants.filter(
+                            (res) => (res.info?.veg === true)
+                        )
+                        setFilteredRestaurant(filteredList);
+                    }}>Only Veg</button>
 
-                <button className="filter-btn" onClick={() => {
-                    setFilteredRestaurant(listOfRestaurants);
-                }}>Clear Filters</button>
+                    <button className="flex px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
+                        setFilteredRestaurant(listOfRestaurants);
+                    }}>Clear Filters</button>
+                </div>
             </div>
-            <div className="restaurant-container">
+            <div className="flex flex-wrap">
                 {
                     filteredRestaurants.map(restaurant => (
-                        <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                        <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}>
+                            {restaurant.info.avgRating > 4.5 ? (
+                                <RestaurentCardPramoted resData={restaurant}/>
+                            ) : (
+                                <RestaurantCard resData={restaurant}/>
+                            )}
+
+                        </Link>
                     ))
                 }
             </div>

@@ -179,4 +179,10 @@
 - Parcel bundle the application in one file.
   but it will be a problem that if application is big and bundled in one file.
   It will take time to load. Same case with small application and multiple bundles.
-  So Parcel will help you to create bundle chunks and this is called as Chunking, code splitting, dynamic Bundling, lazy loading, dynamic importing.    
+  So Parcel will help you to create bundle chunks and this is called as Chunking, code splitting, dynamic Bundling, lazy loading, dynamic importing.
+- Styled components
+    - Material UI
+    - Bootstrap
+    - Chakra UI
+    - Ant Design
+    - Tailwind
