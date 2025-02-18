@@ -186,3 +186,19 @@
     - Chakra UI
     - Ant Design
     - Tailwind
+- Controlled and un-controlled component
+    - If a component is controlled by its parent by passing props, then it is called as controlled component
+    - If a component is independent (Not controlled by props), then it is un-controlled component.
+- Lifting the state up 
+    - Remember accordion example. 
+    - In which first we handle accordion with state variable in child component, 
+    - after that we list the state up in the parent and handle all children's accordion from parent.
+- Props drilling
+    - In react data can be pass one way only.
+    - From parent to the children
+    - So props drilling means, if we want to pass data from top level parent to leaf level child,
+    - Then we need to pass it to all intermediate parents and then at the last actual parent will pass it to the leaf level child.
+    - There is a problem with props drilling that, if a application is very big and parent - child chain is very long then props drilling is not a good way to do that.
+    - To solve this, react has "React Context"
+- React Context
+    - You can access any type of global data in any level of child.

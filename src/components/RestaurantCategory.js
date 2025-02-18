@@ -1,12 +1,9 @@
 import ItemList from "./ItemList";
-import {useState} from "react";
 
-const RestaurantCategory = ({ data }) => {
-    const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ data, setShowIndex, index, showIndex, showItems }) => {
     const handleClick = () => {
-        setShowItems(!showItems);
+        (index === showIndex)? setShowIndex(null) : setShowIndex(index);
     }
-
     return (
         <div key={data.itemCards.categoryId} className="w-6/12 bg-gray-50 shadow-lg p-4 mx-auto my-4">
             {/* Header */}
