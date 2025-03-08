@@ -1,8 +1,9 @@
-import {useEffect, useState} from "react"
+import {useEffect, useState, useContext} from "react"
 import {Link} from "react-router-dom";
 import RestaurantCard, {withPramotedLabel} from "./ReastaurantCard"
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     // Local state variable
@@ -30,6 +31,8 @@ const Body = () => {
           </h1>
         );
     }
+    const { loggedInUser, setUserName } = useContext(UserContext);
+
     return (listOfRestaurants.length === 0)? <Shimmer /> : (
         <div className="body">
             <div className="filter flex">
@@ -62,6 +65,11 @@ const Body = () => {
                     <button className="flex px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
                         setFilteredRestaurant(listOfRestaurants);
                     }}>Clear Filters</button>
+
+                    <div className="py-4">
+                        <label>User Name: </label>
+                        <input className="p-1 border border-solid border-black" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-wrap">

@@ -3,13 +3,13 @@ import {useEffect, useState} from "react";
 const User = ({name, location, contact}) => {
     const[count, setCount] = useState(0);
     useEffect(() =>{
-        const myInterval = setInterval(() => {
-            console.log('Namaste React OP');
-        }, 1000)
+        // const myInterval = setInterval(() => {
+        //     console.log('Namaste React OP');
+        // }, 1000)
 
         return () => {
-            clearInterval(myInterval);
-            console.log("use effect return.")
+            // clearInterval(myInterval);
+            // console.log("use effect return.")
         };
     }, [count]);
     return (

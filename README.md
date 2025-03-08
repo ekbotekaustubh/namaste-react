@@ -202,3 +202,14 @@
     - To solve this, react has "React Context"
 - React Context
     - You can access any type of global data in any level of child.
+    - You can use createContext to create context
+    - You can use useContext to use the context
+    - For class based components you can use 
+      ```code
+        import UserContext from "../utils/UserContext";
+        <UserContext.Consumer>
+            {({loggedInUser}) => (
+                <h1 className="text-xl font-bold">{loggedInUser}</h1>
+            )}
+        </UserContext.Consumer>
+      ```
