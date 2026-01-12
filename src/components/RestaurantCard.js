@@ -1,5 +1,4 @@
 import {CDN_URL} from "../utils/contsnats";
-import ReastaurantCard from "./ReastaurantCard";
 import {useContext} from "react"
 import UserContext from "../utils/UserContext";
 
@@ -37,12 +36,12 @@ const RestaurantCard = (props) => {
     )
 }
 
-export const withPramotedLabel = (RestaurantCard) => {
+export const withPromotedLabel = (RestaurantCard) => {
     return (props) => {
         return (
             <div>
-                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Pramoted</label>
-                <ReastaurantCard {...props} />
+                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
+                <RestaurantCard {...props} />
             </div>
         );
     }

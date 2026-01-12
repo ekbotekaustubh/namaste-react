@@ -1,6 +1,6 @@
 import {useEffect, useState, useContext} from "react"
 import {Link} from "react-router-dom";
-import RestaurantCard, {withPramotedLabel} from "./ReastaurantCard"
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard"
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
@@ -10,7 +10,7 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
     const [filteredRestaurants, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const RestaurentCardPramoted = withPramotedLabel(RestaurantCard);
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     useEffect(() => {
         fetchData();
@@ -19,6 +19,7 @@ const Body = () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.4837121&lng=73.9555877&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         const restaurants = await json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log(restaurants);
         setListOfRestaurant(restaurants);
         setFilteredRestaurant(restaurants);
     }
@@ -77,7 +78,7 @@ const Body = () => {
                     filteredRestaurants.map(restaurant => (
                         <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}>
                             {restaurant.info.avgRating > 4.5 ? (
-                                <RestaurentCardPramoted resData={restaurant}/>
+                                <RestaurantCardPromoted resData={restaurant}/>
                             ) : (
                                 <RestaurantCard resData={restaurant}/>
                             )}
