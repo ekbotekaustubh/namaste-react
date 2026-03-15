@@ -176,8 +176,7 @@
         - Ex. If we started setInterval in componentDidMount, we need to call clearInterval in componentWillUnmount.
     - Same thing in function based components
         - If we call setInterval in useEffect, then in return of setEffect we need to clear it.
-- Parcel bundle the application in one file.
-  but it will be a problem that if application is big and bundled in one file.
+- Parcel bundle the application in one file, but it will be a problem that if application is big and bundled in one file.
   It will take time to load. Same case with small application and multiple bundles.
   So Parcel will help you to create bundle chunks and this is called as Chunking, code splitting, dynamic Bundling, lazy loading, dynamic importing.
 - Styled components
@@ -213,3 +212,37 @@
             )}
         </UserContext.Consumer>
       ```
+- Redux toolkit
+    - Redux and react are two different things
+    - Redux is a different library which used in managing state of javascript applications.
+    - We are going to use two things in redux
+        - Redux-toolkit
+        - React-Redux
+    - Redux-Toolkit: 
+        - You can consider this as a global javascript object 
+        - This object is divided into slices.
+        - You can put different data in different slice
+            - For ex. You can put user info in user slice, cart info in cart slice.
+    - It is not easy to save data in cart slice directly.
+    - How to save data in cart slice?
+        - We need to "dispatch" "action" 
+        - action will call a function
+        - Function modifies the card slice.
+        - Function knows as "reducer"
+    - How to read data from redux store?
+        - We use selector for reading data from redux slice.
+        - selector changes value in react component.
+        - subscribing to the redux store using selector will sync react component with redux slice 
+        - So changing value in slice will reflect to the React component due to this subscription.
+    - Steps
+        - Install libraries @reduxjs/toolkit and react-redux
+        - Build our store
+        - Connect our store to our app
+        - Create a cart slice
+        - Dispatch an action
+        - Read data using selector
+    - In vanilla (older) redux: they mention in the doc 
+        - "Don't mutate the state." 
+        - Developers used to create new state, change that state and then return the new state.
+    - In the latest redux they mentioned in the doc.
+        - "we need to change the state."
