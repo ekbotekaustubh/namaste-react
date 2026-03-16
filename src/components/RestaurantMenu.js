@@ -6,12 +6,11 @@ import {useState} from "react";
 
 const RestaurantMenu = () => {
     const {resId} = useParams();
-    const resInfo = useRestaurantMenu(resId);
+    const {resInfo, error} = useRestaurantMenu(resId);
     const [showIndex, setShowIndex] = useState(0);
 
-    if (resInfo === null) {
-        return <Shimmer/>;
-    }
+    if (error) return <h2>{error}</h2>;
+    if (!resInfo) return <Shimmer />;
 
     const {name, cuisines, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
     const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
@@ -22,7 +21,7 @@ const RestaurantMenu = () => {
             <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
             {categories.map((category, index) => (
                 <RestaurantCategory
-                    key={category?.card?.card?.itemCards?.categoryId}
+                    key={category?.card?.card?.title}
                     data={category?.card?.card}
                     setShowIndex={(indexFromChild) => setShowIndex(indexFromChild)}
                     index={index}
