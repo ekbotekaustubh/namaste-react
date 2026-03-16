@@ -244,5 +244,16 @@
     - In vanilla (older) redux: they mention in the doc 
         - "Don't mutate the state." 
         - Developers used to create new state, change that state and then return the new state.
+        - returning was mandatory.
     - In the latest redux they mentioned in the doc.
         - "we need to change the state."
+    - immer js interanally used by redux which helps to maintain immutable state. 
+    - ```jsunicoderegexp
+        clearCart: (state) => {
+            state.items.length = 0;
+        }```
+      suppose instead of state.item.length you use state.item = [].
+      Then it empty local variable but not the main global state.
+      When you are changing it like state.item = [] you are actually changing a local variable. 
+      thats why main global state won't get change.
+    - read more about RTK query
